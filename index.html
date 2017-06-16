@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='superApp'>
 <head>
   <meta charset="UTF-8">
   <title>Superhero Phone Book</title>
   <link rel="stylesheet" href="style.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+ <script src="app.js"></script>
 </head>
-<body>
+<body body ng-controller='superController as vm'>
+<h2>Super Heroes</h2>
+<div ng-repeat='super in vm.super | filter:vm.searchText' ng-class="{dc: (super.comic == 'DC'), marvel: (super.comic == 'Marvel')}">
+        <p>{{$index + 1}}. {{super.name}} - {{super.number}} - {{super.comic}} - <img src="{{super.photo_url}}"</p>
 
-  <script src="app.js"></script>
+      </div>
+      <label>Search: <input ng-model="vm.searchText"></label>
+      <label>Any: <input ng-model="search.$"></label>
+      <div>
+<input type="text" ng-model="vm.newSuper.name"><input type="text" ng-model="vm.newSuper.number"><input type="text" ng-model="vm.newSuper.comic"><input type="text" ng-model="vm.newSuper.photo_url">
+<button ng-click="vm.addSuper()">Add Hero</button>
+</div>
 </body>
 </html>
